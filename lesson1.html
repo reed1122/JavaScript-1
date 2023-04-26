@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1</title>
+    <style>
+            p{
+            font-family: Arial, Helvetica, sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-align: center;
+            border: 2px solid red;
+            color: #777;
+            box-shadow: 1px 1px 2px #000;
+            border-radius: 10px;
+            padding: 3px 10px;
+            display: inline-block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello World</h1>
+    <p>Player 1: Corey</p>
+    <script>
+        const demo= document.querySelector("p");
+        demo.addEventListener("click", updateName);
+        function updateName (){
+            let name = prompt("please enter a name");
+            alert("Hello there, " + name + "! Nice to meet you!");
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

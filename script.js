@@ -1,1 +1,2 @@
-console.log("Hello World! Welcome to Javascript!");
+var x = 5, y = 10, z = 15;
+console.log(x + y);
