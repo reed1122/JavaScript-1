@@ -11,3 +11,5 @@ if (userRoundPreference === "y") {
 
 alert("The area in " + unit + " is " + circleArea + ".");
 console.log("The area is" + circleArea + ".");
+
+
