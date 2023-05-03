@@ -6,32 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript 1</title>
     <style>
-        p{
-            font-family: Arial, Helvetica, sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            text-align: center;
-            border: 2px solid red;
-            color: #777;
-            box-shadow: 1px 1px 2px #000;
-            border-radius: 10px;
-            padding: 3px 10px;
-            display: inline-block;
-            cursor: pointer;
+        #container{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background-color: green;
+            margin-top: 50px;
         }
-
+        #animate{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: yellow;
+        }
     </style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>Player 1: Corey</p>
-    <script>
-        const demo= document.querySelector("p");
-        demo.addEventListener("click", updateName);
-        function updateName (){
-            let name = prompt("please enter a name");
-            alert("Hello there, " + name + "! Nice to meet you!");
-        }
-    </script>
+    <h1 id="myHeading"></h1>
+    <h2 onclick="changeText(this)">Change Text</h2>
+    <div id="myDiv"></div>
+    <button onclick="changeColor()">Change Color</button>
+    <button id="myBtn">Display Date</button>
+    <button id="mytime">The time</button>
+    <button onclick="move()">Animate Me!</button>
+    <p id="time"></p>
+    <p id="myDate"></p>
+    <p class="para-1">test</p>
+    <p class="para-1">test</p>
+    <p class="para-1">test</p>
+    <div id="container">
+        <div id="animate"></div>
+    </div>
+    <script src="demo.js"></script>
 </body>
 </html>

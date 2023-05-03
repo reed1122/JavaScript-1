@@ -8,7 +8,7 @@ function getCount() {
 function printMotto(motto, count) {
   current = 0;
   while(current < count) {
-    console.log((current + 1) + ". " + motto);
+    console.log((current + 1) + " . " + motto);
     current+=1;
   }
 }
