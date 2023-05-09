@@ -78,3 +78,9 @@ function move() {
     }
   }
 }
+
+function age(){
+  let age = number(document.getElementById("age").value);
+  console.log("Input: " + age + ", " + typeof age);
+  return false;
+}
