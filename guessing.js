@@ -1,67 +1,60 @@
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-const guesses = document.querySelector('.guesses');
-const lastResult = document.querySelector('.lastResult');
-const lowOrHi = document.querySelector('.lowOrHi');
-const guessSubmit = document.querySelector('.guessSubmit');
-const guessField = document.querySelector('.guessField');
-let guessCount = 1;
-let resetButton;
+function submitData() {
+  let min = Number(guessForm.min.value);
+  let max = Number(guessForm.max.value);
+  console.log(min);
+  console.log(max);
+  if (min == "" || max == "") {
+    let value = "Both fields must be filled in.";
+    let color = "red";
+    updateDOM(value, color);
 
-function checkGuess() {
-  const userGuess = Number(guessField.value);
-  if (guessCount === 1) {
-    guesses.textContent = 'Previous guesses: ';
+    return false;
   }
 
-  guesses.textContent += userGuess + ' ';
+  if (min > max) {
+    let value = "The min value cannot be greater than the max value";
+    let color = "red";
+    updateDOM(value, color);
+    return false;
+  }
 
-  if (userGuess === randomNumber) {
-    lastResult.textContent = 'Congratulations! You got it right!';
-    lastResult.style.backgroundColor = 'green';
-    lowOrHi.textContent = '';
-    setGameOver();
-  } else if (guessCount === 10) {
-    lastResult.textContent = '!!!GAME OVER!!!';
-    lowOrHi.textContent = '';
-    setGameOver();
-  } else {
-    lastResult.textContent = 'Wrong!';
-    lastResult.style.backgroundColor = 'red';
-    if(userGuess < randomNumber) {
-      lowOrHi.textContent = 'Last guess was too low!' ;
-    } else if(userGuess > randomNumber) {
-      lowOrHi.textContent = 'Last guess was too high!';
+  numberGuessGame(min, max);
+  return false;
+}
+
+function updateDOM(value, color) {
+  document.getElementById("output").innerHTML = value;
+  document.getElementById("output").style.color = color;
+}
+
+function numberGuessGame(min, max) {
+  let num = Math.ceil(randomNumber(min, max));
+  console.log(num);
+  let message =
+    "I'm thinking of a number between " +
+    min +
+    " and " +
+    max +
+    " try to guess it.";
+  let guess;
+  do {
+    guess = parseInt(prompt(message));
+    if (guess < num) {
+      message = "Guess is to low. Try again!";
+      guess = parseInt(prompt(message));
     }
-  }
-
-  guessCount++;
-  guessField.value = '';
-  guessField.focus();
+    if (guess > num) {
+      message = "Guess is to High. Try again!";
+      guess = parseInt(prompt(message));
+    }
+    if (isNaN(guess)) {
+      break;
+    }
+  } while (guess !== num);
+  message = "Congrats, you win!";
+  updateDOM(message, "green");
 }
 
-guessSubmit.addEventListener('click', checkGuess);
-
-function setGameOver() {
-  guessField.disabled = true;
-  guessSubmit.disabled = true;
-  resetButton = document.createElement('button');
-  resetButton.textContent = 'Start new game';
-  document.body.appendChild(resetButton);
-  resetButton.addEventListener('click', resetGame);
-}
-
-function resetGame() {
-  guessCount = 1;
-  const resetParas = document.querySelectorAll('.resultParas p');
-  for (const resetPara of resetParas) {
-    resetPara.textContent = '';
-  }
-
-  resetButton.parentNode.removeChild(resetButton);
-  guessField.disabled = false;
-  guessSubmit.disabled = false;
-  guessField.value = '';
-  guessField.focus();
-  lastResult.style.backgroundColor = 'white';
-  randomNumber = Math.floor(Math.random() * 100) + 1;
+function randomNumber(min, max) {
+  return Math.random() * (max - min) + min;
 }

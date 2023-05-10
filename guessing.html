@@ -1,73 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guessing Game</title>
-
-  <style>
-    body{
-      background-color: lightcoral;
-    }
-
-    .container{
-      width: 500px;
-      height: 250px;
-      margin-left: 700px;
-      text-align: center;
-      background-color: white;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-  <!DOCTYPE html>
-  <html lang="en-us">
-    <head>
-      <meta charset="utf-8">
-  
-      <title>Number guessing game</title>
-  
-      <style>
-        html {
-          font-family: sans-serif;
-        }
-  
-        body {
-          width: 50%;
-          max-width: 800px;
-          min-width: 480px;
-          margin: 0 auto;
-        }
-        
-        .form input[type="number"] {
-          width: 200px;
-        }
-  
-        .lastResult {
-          color: white;
-          padding: 3px;
-        }
-      </style>
-    </head>
-  
-    <body>
-      <h1>Number guessing game</h1>
-  
-      <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
-  
-      <div class="form">
-        <label for="guessField">Enter a guess: </label>
-        <input type="number" min="1" max="100" required id="guessField" class="guessField">
-        <input type="submit" value="Submit guess" class="guessSubmit">
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Guessing Game</title>
+        <style>
+          .container {
+            width: 500px;
+            height: 250px;
+            margin-top: 100px;
+            margin-left: 200px;
+            padding: 5px;
+            border: 3px solid black;
+            text-align: center;
+          }
+          body{
+            background-color: beige;
+            text-align: center;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+        <h1>Number Guessing Game</h1>
+        <p>Please enter a low number and a high number for our guessing game range (for example: 1-100)</p>
+        <form name="guessForm" onsubmit="return submitData();">
+          <label for="min">Min</label>
+          <input type="text" name="min" id="min" /><br />
+          <label for="max">Max</label>
+          <input type="text" name="max" id="max" /><br />
+          <button type="submit">Play</button>
+        </form>
       </div>
-  
-      <div class="resultParas">
-        <p class="guesses"></p>
-        <p class="lastResult"></p>
-        <p class="lowOrHi"></p>
+        <div id="output"></div>
         <script src="guessing.js"></script>
-      </div>
-</body>
+      </body>
+    </html>
+  </body>
 </html>
